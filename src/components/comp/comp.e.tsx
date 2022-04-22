@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Slider from "react-slick";
 
 export const Wrapper = styled.div`
   width: calc(100% - 160px);
@@ -7,7 +8,10 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 1100px) {
     width: calc(100% - 60px);
   }
-  overflow: hidden;
+  @media screen and (max-width: 430px) {
+    width: 100%;
+  }
+   overflow: hidden;
 `;
 
 export const Card = styled.div`
@@ -22,30 +26,39 @@ export const Card = styled.div`
   @media screen and (max-width: 430px) {
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 50px;
+    display: none;
   }
 `;
 export const ImgCard = styled.img`
   height: 41px;
   width: auto;
-  &:not(:nth-child(1)) {
-    justify-self: center;
-  }
-  &:nth-child(5) {
-    justify-self: flex-end;
-  }
   @media screen and (max-width: 1000px) {
     height: 30px;
   }
   @media screen and (max-width: 745px) {
     height: 25px;
   }
+  @media screen and (min-width: 430px) {
+    &:not(:nth-child(1)) {
+      justify-self: center;
+    }
+    &:nth-child(5) {
+      justify-self: flex-end;
+    }
+  }
   @media screen and (max-width: 430px) {
     height: 30px;
-    &:nth-of-type(2n + 1) {
-      justify-self: center;
-    }
-    &:nth-of-type(2n) {
-      justify-self: center;
-    }
+    justify-self: center;
+    margin: 0 auto;
+  }
+`;
+
+export const Carousel = styled(Slider)`
+ @media screen and (min-width: 430px) {
+     display: none;
+ }
+    margin-top: 50px;
+  .slick-slide {
+    /* margin: 0 20px; */
   }
 `;
