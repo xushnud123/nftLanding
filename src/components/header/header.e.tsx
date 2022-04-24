@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { HeaderProps } from "./header.t";
 
 export const Wrapper = styled.div`
   width: calc(100% - 160px);
@@ -13,7 +14,9 @@ export const Wrapper = styled.div`
   }
   overflow: hidden;
 `;
-export const Card = styled.div`
+export const Card = styled.div<HeaderProps>`
+  margin-top: 50px;
+  padding: 15px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   @media screen and (max-width: 1100px) {
@@ -26,14 +29,37 @@ export const Card = styled.div`
     grid-template-columns: 70% 30%;
   }
   @media screen and (max-width: 450px) {
-    grid-template-columns: 75% 25%;
+    ${({ head }) =>
+      head
+        ? css`
+            grid-template-columns: 60% 40%;
+          `
+        : css`
+            grid-template-columns: 75% 25%;
+          `};
   }
+  ${({ head }) =>
+    head
+      ? css`
+          border-top: 2px solid #eeeeee;
+        `
+      : css`
+          border-top: 2px solid transparent;
+        `};
+  ${({ head }) =>
+    head
+      ? css`
+          border-bottom: 2px solid #eeeeee;
+        `
+      : css`
+          border-bottom: 2px solid transparent;
+        `};
 `;
 
 export const LeftCard = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Link = styled.a`
@@ -130,26 +156,56 @@ export const SignUp = styled.button`
 
 export const RightCard = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
   @media screen and (max-width: 630px) {
     position: relative;
   }
 `;
 
-export const HeaderImg = styled.img`
+export const HeaderImg = styled.img<HeaderProps>`
   width: 100%;
   height: auto;
+  ${({ head }) =>
+    head
+      ? css`
+          justify-self: center;
+          max-width: 206px;
+          bottom: -20px;
+        `
+      : css`
+          bottom: -20px;
+        `};
   @media screen and (max-width: 900px) {
     height: 100%;
   }
   @media screen and (max-width: 630px) {
     position: absolute;
     width: 394px;
-    right: -190px;
+    ${({ head }) =>
+      head
+        ? css`
+            right: -100px;
+            bottom: 0;
+          `
+        : css`
+            right: -190px;
+          `};
   }
   @media screen and (max-width: 450px) {
     position: absolute;
-    width: 294px;
-    right: -150px;
-    top: -40px;
+
+    ${({ head }) =>
+      head
+        ? css`
+            right: -100px;
+            bottom: -20px !important;
+            width: 245px;
+          `
+        : css`
+            top: -40px;
+            right: -150px;
+            width: 294px;
+          `};
   }
 `;

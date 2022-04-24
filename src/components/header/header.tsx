@@ -11,12 +11,14 @@ import {
   HeaderImg
 } from "./header.e";
 import grafic from '../../assets/img/graphic.svg'
-export interface HeaderProps {}
+import grafic2 from '../../assets/img/design-82a0ada5-644e-4b87-ae41-88faf9684ea3 (2) 1.svg'
+import { HeaderProps } from "./header.t";
 
-const Header: FC<HeaderProps> = () => {
+
+const Header: FC<HeaderProps> = ({head}) => {
   return (
     <Wrapper>
-      <Card>
+      <Card head={head}>
         <LeftCard>
           <Link>Launching Soon</Link>
           <Title>An NFT like no other</Title>
@@ -27,7 +29,7 @@ const Header: FC<HeaderProps> = () => {
           <SignUp>Sign Up</SignUp>
         </LeftCard>
         <RightCard>
-            <HeaderImg src={grafic} alt="img nout found" />
+            <HeaderImg src={head ? grafic2 : grafic} head={head} alt="img nout found" />
         </RightCard>
       </Card>
     </Wrapper>

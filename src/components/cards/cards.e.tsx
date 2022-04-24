@@ -22,15 +22,15 @@ export const Rov = styled.div`
   }
   @media screen and (max-width: 750px) {
     grid-template-columns: repeat(3, 32%);
-    grid-gap: calc(2%);
+    grid-gap: 35px;
+    grid-column-gap: 2%;
   }
   @media screen and (max-width: 650px) {
     grid-template-columns: repeat(2, 48%);
-    grid-gap: calc(4%);
+    grid-column-gap: 4%;
   }
   @media screen and (max-width: 450px) {
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: calc(2%);
   }
 `;
 
